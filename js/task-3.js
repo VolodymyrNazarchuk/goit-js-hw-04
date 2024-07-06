@@ -1,12 +1,23 @@
-function getElementWidth(content, padding, border) {
-  content = parseFloat(content);
-  padding = parseFloat(padding);
-  border = parseFloat(border);
+const profile = {
+  username: "Jacob",
+  playTime: 300,
+  changeUsername(newName) {
+    this.username = newName;
+  },
 
-  const elementWidth = content + (padding + border) * 2;
-  return elementWidth;
-}
+  updatePlayTime(hours) {
+    this.playTime = this.playTime + hours;
+  },
 
-console.log(getElementWidth("50px", "8px", "4px")); // 74
-console.log(getElementWidth("60px", "12px", "8.5px")); // 101
-console.log(getElementWidth("200px", "0px", "0px")); // 200
+  getInfo() {
+    return `${this.username} has ${this.playTime} active hours!`;
+  },
+};
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
